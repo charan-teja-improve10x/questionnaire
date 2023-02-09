@@ -21,8 +21,8 @@ public class RadioButtonActivity extends AppCompatActivity {
 
     private void handleVerifyBtnClick() {
         verifyBtn.setOnClickListener(v -> {
-            boolean result = false;
-            shoeResult(result);
+            boolean result = isCorrect();
+            showResult(result);
         });
     }
 
@@ -31,7 +31,7 @@ public class RadioButtonActivity extends AppCompatActivity {
         verifyBtn = findViewById(R.id.verify_btn);
     }
 
-    public boolean isCurrect() {
+    public boolean isCorrect() {
         int selected = planetsRg.getCheckedRadioButtonId();
         boolean result = false;
         if (selected == R.id.eight_rb) {
@@ -40,9 +40,9 @@ public class RadioButtonActivity extends AppCompatActivity {
         return result;
     }
 
-    public void shoeResult(boolean result) {
-        if (isCurrect()) {
-            Toast.makeText(this, "Currect Answeer", Toast.LENGTH_LONG).show();
+    public void showResult(boolean result) {
+        if (result) {
+            Toast.makeText(this, "Correct Answeer", Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(this, "Sorry, Wrong Answer", Toast.LENGTH_LONG).show();
         }
