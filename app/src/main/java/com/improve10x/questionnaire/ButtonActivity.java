@@ -15,26 +15,31 @@ public class ButtonActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_button);
         handleInitViews();
-        handleRadioButtonBtn();
-        handleCheckBoxBtn();
+        handleRadioButtonBtnClick();
+        handleCheckBoxBtnClick();
     }
-
-    private void handleCheckBoxBtn() {
-        checkBoxesBtn.setOnClickListener(v -> {
-            Intent checkActivityIntent = new Intent(this,CeckBoxActivity.class);
-            startActivity(checkActivityIntent);
-        });
-    }
-
-    private void handleRadioButtonBtn() {
-        radioButtonsBtn.setOnClickListener(view -> {
-            Intent radioActivityIntent = new Intent(this,RadioButtonActivity.class);
-            startActivity(radioActivityIntent);
-        });
-    }
-
     private void handleInitViews() {
         radioButtonsBtn = findViewById(R.id.radio_button_btn);
         checkBoxesBtn = findViewById(R.id.check_box_btn);
+    }
+
+    private void handleCheckBoxBtnClick() {
+        checkBoxesBtn.setOnClickListener(v -> {
+            navigateToCheckBoxActivity();
+        });
+    }
+
+    private void handleRadioButtonBtnClick() {
+        radioButtonsBtn.setOnClickListener(view -> {
+            navigateToRadioButtonActivity();
+        });
+    }
+    private void navigateToRadioButtonActivity(){
+        Intent radioActivity = new Intent(this,RadioButtonActivity.class);
+        startActivity(radioActivity);
+    }
+    private void navigateToCheckBoxActivity(){
+        Intent checkBoxActivityIntent = new Intent(this, CheckBoxActivity.class);
+        startActivity(checkBoxActivityIntent);
     }
 }
